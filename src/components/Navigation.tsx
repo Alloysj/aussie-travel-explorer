@@ -1,8 +1,7 @@
-import React from 'react';
+import { useState } from 'react';
 import { Button } from './ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { User, Menu, X, Heart } from 'lucide-react';
-import { useState } from 'react';
 import type { User as SupabaseUser } from '@supabase/supabase-js';
 
 type Page = 'home' | 'listings' | 'destination' | 'account' | 'saved';

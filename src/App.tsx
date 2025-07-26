@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './styles/globals.css';
 import { Home } from './components/Home';
 import { TravelListings } from './components/TravelListings';
 import { DestinationDetail } from './components/DestinationDetail';
