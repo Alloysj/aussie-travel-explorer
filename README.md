@@ -16,7 +16,6 @@ Aussie Travel Explorer is a modern serverless web application designed to provid
 - [API Endpoints](#api-endpoints)
 - [Folder Structure](#folder-structure)
 - [Testing](#testing)
-- [Future Enhancements](#future-enhancements)
 - [Author](#author)
 
 ---
@@ -142,16 +141,16 @@ npm start
 The application will be available at http://localhost:3000.
 ```
 
-API Endpoints (Sample)
-Method	Endpoint	Description
-GET	/travel-items	Fetch all travel listings
-GET	/travel-items/:id	Fetch a single destination
-POST	/comments/:id	Submit a comment (auth only)
-GET	/comments/:id	Fetch comments for a post
+## API Endpoints 
+- Method	Endpoint	Description
+- GET	/travel-items	Fetch all travel listings
+- GET	/travel-items/:id	Fetch a single destination
+- POST	/comments/:id	Submit a comment (auth only)
+- GET	/comments/:id	Fetch comments for a post
 
 Authenticated endpoints require a valid Cognito token
 
-Folder Structure
+## Folder Structure
 ```pgsql
 
 aussie-travel-explorer/
@@ -166,23 +165,20 @@ aussie-travel-explorer/
 ├── README.md
 └── package.json
 ```
-Testing
-Frontend: Unit tests using Jest and React Testing Library
+## Testing
+**Frontend:** Unit tests using Jest and React Testing Library
 
-Backend: Endpoint testing using Postman
+**Backend:** Endpoint testing using Postman
 
-Manual QA: Simulate user actions (login, comment, fetch listings)
+**Manual QA:** Simulate user actions (login, comment, fetch listings)
 
-Test cases include:
+**Test cases include:**
 
-Authentication success/failure
-
-Invalid data handling
-
-Response time checks
-
-Future Enhancements
-Google Maps API integration
+- Authentication success/failure
+- Invalid data handling
+- Response time checks
+- Future Enhancements
+- Google Maps API integration
 
 User-submitted destinations (UGC)
 
