@@ -170,7 +170,7 @@ export function Auth({ onAuthSuccess, onNavigate, user, isAdmin, isAdminAuth = f
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       {onNavigate && (
         <NewNavigation 
           currentPage={isAdminAuth ? "admin-auth" : "auth"} 
@@ -190,7 +190,7 @@ export function Auth({ onAuthSuccess, onNavigate, user, isAdmin, isAdminAuth = f
         />
 
         {/* Auth Card */}
-        <Card className="relative z-10 w-full max-w-md bg-white/95 backdrop-blur-sm shadow-2xl border-0">
+        <Card className="relative z-10 w-full max-w-md bg-card/95 backdrop-blur-sm shadow-2xl border-0">
         <CardHeader className="text-center pb-6 pt-8 px-8">
           <div className="w-16 h-16 bg-orange-500 rounded-xl flex items-center justify-center mx-auto mb-6 shadow-lg">
             <span className="text-white font-bold text-xl">TQ</span>
@@ -375,7 +375,7 @@ export function Auth({ onAuthSuccess, onNavigate, user, isAdmin, isAdminAuth = f
                   <span className="w-full border-t border-gray-200" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-white px-3 text-gray-500 font-medium">Or continue with</span>
+                  <span className="bg-background px-3 text-gray-500 font-medium">Or continue with</span>
                 </div>
               </div>
 

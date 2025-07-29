@@ -119,7 +119,7 @@ export function AdminAddGuide({ onNavigate, user, isAdmin }: AdminAddGuideProps)
   const isFormValid = formData.title && formData.content && formData.region && formData.category;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <NewNavigation 
         currentPage="admin-add-guide" 
         onNavigate={onNavigate} 
@@ -168,8 +168,8 @@ export function AdminAddGuide({ onNavigate, user, isAdmin }: AdminAddGuideProps)
         </div>
 
         {/* Form Card */}
-        <Card className="bg-white shadow-sm border-gray-200">
-          <CardHeader className="border-b border-gray-200">
+        <Card className="bg-card shadow-sm border-border">
+          <CardHeader className="border-b border-border">
             <CardTitle className="text-xl font-bold text-gray-900">Guide Details</CardTitle>
           </CardHeader>
           <CardContent className="p-8">
@@ -288,7 +288,7 @@ export function AdminAddGuide({ onNavigate, user, isAdmin }: AdminAddGuideProps)
                       <img 
                         src={imagePreview} 
                         alt="Preview" 
-                        className="w-full h-48 object-cover rounded-lg border border-gray-200"
+                        className="w-full h-48 object-cover rounded-lg border border-border"
                         onError={() => setImagePreview(null)}
                       />
                     </div>
@@ -296,7 +296,7 @@ export function AdminAddGuide({ onNavigate, user, isAdmin }: AdminAddGuideProps)
                 )}
                 
                 {!imagePreview && (
-                  <div className="w-full max-w-md mx-auto md:mx-0 h-48 bg-gray-100 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center">
+                  <div className="w-full max-w-md mx-auto md:mx-0 h-48 bg-muted rounded-lg border-2 border-dashed border-border flex items-center justify-center">
                     <div className="text-center">
                       <ImageIcon className="w-12 h-12 text-gray-400 mx-auto mb-2" />
                       <p className="text-sm text-gray-500">Image preview will appear here</p>
@@ -306,7 +306,7 @@ export function AdminAddGuide({ onNavigate, user, isAdmin }: AdminAddGuideProps)
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row justify-end gap-4 pt-6 border-t border-gray-200">
+              <div className="flex flex-col sm:flex-row justify-end gap-4 pt-6 border-t border-border">
                 <Button 
                   type="button" 
                   variant="outline"

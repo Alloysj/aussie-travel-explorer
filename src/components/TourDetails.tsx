@@ -273,21 +273,21 @@ export function TourDetails({ tourId, onNavigate, user, isAdmin }: TourDetailsPr
               <span className="text-sm">Share:</span>
               <button 
                 onClick={() => handleShare('Facebook')}
-                className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
+                className="p-2 bg-background/20 rounded-full hover:bg-background/30 transition-colors"
                 aria-label="Share on Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </button>
               <button 
                 onClick={() => handleShare('Twitter')}
-                className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
+                className="p-2 bg-background/20 rounded-full hover:bg-background/30 transition-colors"
                 aria-label="Share on Twitter"
               >
                 <Twitter className="w-5 h-5" />
               </button>
               <button 
                 onClick={() => handleShare('Instagram')}
-                className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
+                className="p-2 bg-background/20 rounded-full hover:bg-background/30 transition-colors"
                 aria-label="Share on Instagram"
               >
                 <Instagram className="w-5 h-5" />

@@ -234,7 +234,7 @@ export function ToursPage({ onNavigate, onTourSelect, user, isAdmin }: ToursPage
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <NewNavigation 
         currentPage="tours" 
         onNavigate={onNavigate} 
@@ -252,7 +252,7 @@ export function ToursPage({ onNavigate, onTourSelect, user, isAdmin }: ToursPage
         </div>
 
         {/* Filter Bar */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
+        <div className="bg-card rounded-lg shadow-sm border border-border p-6 mb-8">
           <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
             <div className="flex flex-col sm:flex-row gap-4 flex-1">
               {/* Region Filter */}
@@ -398,8 +398,8 @@ export function ToursPage({ onNavigate, onTourSelect, user, isAdmin }: ToursPage
 
                     {/* View Tour Button (appears on hover) */}
                     <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                      <Button 
-                        className="w-full bg-white text-gray-900 hover:bg-gray-100"
+                      <Button
+                        className="w-full bg-background text-foreground hover:bg-muted"
                         aria-label={`View details for ${tour.title}`}
                         onClick={(e) => {
                           e.stopPropagation();

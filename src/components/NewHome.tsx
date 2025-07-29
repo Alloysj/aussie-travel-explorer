@@ -244,7 +244,7 @@ export function Home({ onDestinationSelect, onNavigate }: HomeProps) {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`w-3 h-3 rounded-full transition-colors ${
-                index === currentSlide ? 'bg-white' : 'bg-white/50'
+                index === currentSlide ? 'bg-background' : 'bg-background/50'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

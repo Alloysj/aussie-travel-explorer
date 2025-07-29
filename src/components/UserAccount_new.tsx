@@ -219,7 +219,7 @@ export function UserAccount({ user, onNavigate, isAdmin }: UserAccountProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <NewNavigation 
         currentPage="account" 
         onNavigate={onNavigate} 
@@ -240,21 +240,21 @@ export function UserAccount({ user, onNavigate, isAdmin }: UserAccountProps) {
             <TabsTrigger 
               value="profile"
               role="tab"
-              className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-white border border-gray-200 data-[state=inactive]:bg-white data-[state=inactive]:text-gray-700 hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-white border border-border data-[state=inactive]:bg-card data-[state=inactive]:text-gray-700 hover:bg-muted focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               Profile
             </TabsTrigger>
             <TabsTrigger 
               value="saved-trips"
               role="tab"
-              className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-white border border-gray-200 data-[state=inactive]:bg-white data-[state=inactive]:text-gray-700 hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-white border border-border data-[state=inactive]:bg-card data-[state=inactive]:text-gray-700 hover:bg-muted focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               Saved Trips
             </TabsTrigger>
             <TabsTrigger 
               value="comments"
               role="tab"
-              className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-white border border-gray-200 data-[state=inactive]:bg-white data-[state=inactive]:text-gray-700 hover:bg-gray-50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              className="rounded-full data-[state=active]:bg-primary data-[state=active]:text-white border border-border data-[state=inactive]:bg-card data-[state=inactive]:text-gray-700 hover:bg-muted focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
             >
               My Comments
             </TabsTrigger>

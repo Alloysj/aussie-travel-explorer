@@ -171,7 +171,7 @@ export function AdminUsers({ onNavigate, user, isAdmin }: AdminUsersProps) {
   const adminUsers = users.filter(u => u.role === 'Admin').length;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <NewNavigation 
         currentPage="admin-users" 
         onNavigate={onNavigate} 
@@ -249,7 +249,7 @@ export function AdminUsers({ onNavigate, user, isAdmin }: AdminUsersProps) {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card className="bg-white shadow-sm border-gray-200">
+          <Card className="bg-card shadow-sm border-border">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -262,7 +262,7 @@ export function AdminUsers({ onNavigate, user, isAdmin }: AdminUsersProps) {
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-white shadow-sm border-gray-200">
+          <Card className="bg-card shadow-sm border-border">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -275,7 +275,7 @@ export function AdminUsers({ onNavigate, user, isAdmin }: AdminUsersProps) {
               </div>
             </CardContent>
           </Card>
-          <Card className="bg-white shadow-sm border-gray-200">
+          <Card className="bg-card shadow-sm border-border">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -291,8 +291,8 @@ export function AdminUsers({ onNavigate, user, isAdmin }: AdminUsersProps) {
         </div>
 
         {/* Users Table */}
-        <Card className="bg-white shadow-sm border-gray-200">
-          <CardHeader className="border-b border-gray-200">
+        <Card className="bg-card shadow-sm border-border">
+          <CardHeader className="border-b border-border">
             <CardTitle className="text-xl font-bold text-gray-900">Users</CardTitle>
           </CardHeader>
           <CardContent className="p-6">
@@ -311,9 +311,9 @@ export function AdminUsers({ onNavigate, user, isAdmin }: AdminUsersProps) {
 
             {/* Users Table */}
             {filteredUsers.length > 0 ? (
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <div className="border border-border rounded-lg overflow-hidden">
                 <Table>
-                  <TableHeader className="bg-gray-50">
+                  <TableHeader className="bg-muted">
                     <TableRow>
                       <TableHead className="font-medium text-gray-900">User</TableHead>
                       <TableHead className="font-medium text-gray-900">Email</TableHead>
@@ -325,7 +325,7 @@ export function AdminUsers({ onNavigate, user, isAdmin }: AdminUsersProps) {
                   </TableHeader>
                   <TableBody>
                     {filteredUsers.map((user) => (
-                      <TableRow key={user.id} className="border-gray-200">
+                      <TableRow key={user.id} className="border-border">
                         <TableCell>
                           <div className="flex items-center gap-3">
                             <Avatar className="h-10 w-10">

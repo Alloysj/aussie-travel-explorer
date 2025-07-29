@@ -166,7 +166,7 @@ export function NewTravelListings({ onDestinationSelect, onNavigate, user, isAdm
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <NewNavigation 
         currentPage="listings" 
         onNavigate={onNavigate} 
@@ -175,7 +175,7 @@ export function NewTravelListings({ onDestinationSelect, onNavigate, user, isAdm
       />
 
       {/* Sticky Filter Bar */}
-      <div className="sticky top-16 z-40 bg-white shadow-sm border-b border-gray-200">
+      <div className="sticky top-16 z-40 bg-card shadow-sm border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between py-4 gap-4">
             {/* Search */}
@@ -288,7 +288,7 @@ export function NewTravelListings({ onDestinationSelect, onNavigate, user, isAdm
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         
                         {/* Badges */}
-                        <Badge className="absolute top-3 left-3 bg-white/90 text-black">
+                        <Badge className="absolute top-3 left-3 bg-background/90 text-foreground">
                           {destination.category}
                         </Badge>
                         <Badge className="absolute top-3 right-3 bg-black/80 text-white">
