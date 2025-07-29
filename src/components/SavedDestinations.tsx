@@ -2,287 +2,244 @@ import { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
-import { ImageWithFallback } from './figma/ImageWithFallback';
-import { Star, Clock, Loader2, Heart, Trash2 } from 'lucide-react';
-import { projectId } from '../utils/supabase/info';
-import { supabase } from '../utils/supabase/client';
+import { Skeleton } from './ui/skeleton';
+import { NewNavigation } from './NewNavigation';
+import { Footer } from './Footer';
+import { HeartOff, Luggage } from 'lucide-react';
 import { toast } from 'sonner';
+import { motion } from 'framer-motion';
 import type { User } from '@supabase/supabase-js';
+
+type Page = 'home' | 'listings' | 'destination' | 'account' | 'saved' | 'auth' | 'admin-auth' | 'admin-dashboard' | 'admin-add-guide' | 'admin-comments' | 'admin-users' | 'not-found' | 'blogs' | 'tours' | 'about' | 'contact';
+
+interface SavedTripsItem {
+  id: string;
+  name: string;
+  region: string;
+  image: string;
+  savedDate: string;
+}
 
 interface SavedDestinationsProps {
   user: User | null;
   onDestinationSelect: (destinationId: string) => void;
+  onNavigate?: (page: Page) => void;
+  isAdmin?: boolean;
+  savedItems?: SavedTripsItem[];
+  showNavigation?: boolean;
 }
 
-interface Destination {
-  id: string;
-  name: string;
-  description: string;
-  images: string[];
-  rating: number;
-  reviews: number;
-  category: string;
-  region: string;
-  duration: string;
-  price: string;
-}
+export function SavedDestinations({ 
+  user, 
+  onDestinationSelect, 
+  onNavigate, 
+  isAdmin, 
+  savedItems = [], 
+  showNavigation = true 
+}: SavedDestinationsProps) {
+  const [savedDestinations, setSavedDestinations] = useState<SavedTripsItem[]>(savedItems);
+  const [isLoading, setIsLoading] = useState(false);
 
-export function SavedDestinations({ user, onDestinationSelect }: SavedDestinationsProps) {
-  const [savedDestinations, setSavedDestinations] = useState<Destination[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
+  // Simulate loading when not using provided savedItems
   useEffect(() => {
-    if (user) {
-      fetchSavedDestinations();
-    } else {
-      setIsLoading(false);
-    }
-  }, [user]);
-
-  const fetchSavedDestinations = async () => {
-    if (!user) return;
-
-    try {
+    if (savedItems.length === 0 && showNavigation) {
       setIsLoading(true);
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session?.access_token) {
-        throw new Error('Authentication required');
-      }
-
-      // Get saved destination IDs
-      const savedResponse = await fetch(`https://${projectId}.supabase.co/functions/v1/make-server-838db481/user/saved`, {
-        headers: {
-          'Authorization': `Bearer ${session.access_token}`,
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (!savedResponse.ok) {
-        throw new Error('Failed to fetch saved destinations');
-      }
-
-      const savedData = await savedResponse.json();
-      const savedIds = savedData.saved || [];
-
-      if (savedIds.length === 0) {
-        setSavedDestinations([]);
-        return;
-      }
-
-      // Get all destinations
-      const destinationsResponse = await fetch(`https://${projectId}.supabase.co/functions/v1/make-server-838db481/destinations`, {
-        headers: {
-          'Authorization': `Bearer ${session.access_token}`,
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (!destinationsResponse.ok) {
-        throw new Error('Failed to fetch destinations');
-      }
-
-      const destinationsData = await destinationsResponse.json();
-      const allDestinations = destinationsData.destinations || [];
-
-      // Filter to only saved destinations
-      const saved = allDestinations.filter((dest: Destination) => 
-        savedIds.includes(dest.id)
-      );
-
-      setSavedDestinations(saved);
-    } catch (err) {
-      console.error('Error fetching saved destinations:', err);
-      setError('Failed to load saved destinations');
-    } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        // Mock saved destinations
+        setSavedDestinations([
+          {
+            id: '1',
+            name: 'Sydney Opera House',
+            region: 'Sydney',
+            image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop&auto=format&q=75',
+            savedDate: '2024-01-15'
+          },
+          {
+            id: '2',
+            name: 'Great Barrier Reef',
+            region: 'Queensland',
+            image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop&auto=format&q=75',
+            savedDate: '2024-01-20'
+          },
+          {
+            id: '3',
+            name: 'Uluru',
+            region: 'Northern Territory',
+            image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop&auto=format&q=75',
+            savedDate: '2024-02-01'
+          },
+          {
+            id: '4',
+            name: 'Blue Mountains',
+            region: 'New South Wales',
+            image: 'https://images.unsplash.com/photo-1601467034225-609c87b8e678?w=400&h=300&fit=crop&auto=format&q=75',
+            savedDate: '2024-01-25'
+          },
+          {
+            id: '5',
+            name: 'Bondi Beach',
+            region: 'Sydney',
+            image: 'https://images.unsplash.com/photo-1548625361-3c8b9d1c67d3?w=400&h=300&fit=crop&auto=format&q=75',
+            savedDate: '2024-02-05'
+          },
+          {
+            id: '6',
+            name: 'Daintree Rainforest',
+            region: 'Queensland',
+            image: 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=400&h=300&fit=crop&auto=format&q=75',
+            savedDate: '2024-02-10'
+          }
+        ]);
+        setIsLoading(false);
+      }, 500);
+    } else {
+      setSavedDestinations(savedItems);
     }
+  }, [savedItems, showNavigation]);
+
+  const handleRemoveFromSaved = (destinationId: string) => {
+    setSavedDestinations(prev => prev.filter(item => item.id !== destinationId));
+    toast.success('Removed from saved trips.');
   };
 
-  const handleUnsaveDestination = async (destinationId: string) => {
-    if (!user) return;
-
-    try {
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session?.access_token) {
-        throw new Error('Authentication required');
-      }
-
-      const response = await fetch(`https://${projectId}.supabase.co/functions/v1/make-server-838db481/user/saved/${destinationId}`, {
-        method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${session.access_token}`,
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to remove destination');
-      }
-
-      // Remove from local state
-      setSavedDestinations(prev => prev.filter(dest => dest.id !== destinationId));
-      toast.success('Destination removed from saved list');
-    } catch (err) {
-      console.error('Error removing saved destination:', err);
-      toast.error('Failed to remove destination');
-    }
-  };
-
-  if (!user) {
-    return (
-      <div className="min-h-screen bg-background py-8 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center py-20">
-            <Heart className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-            <h2 className="text-2xl font-bold mb-4">Save Your Favorite Destinations</h2>
-            <p className="text-muted-foreground">
-              Sign in to save destinations and create your travel wishlist
-            </p>
-          </div>
+  const SkeletonTile = () => (
+    <Card className="overflow-hidden">
+      <div className="animate-pulse">
+        <Skeleton className="aspect-[4/3] w-full" />
+        <div className="p-4 space-y-2">
+          <Skeleton className="h-4 w-3/4" />
+          <Skeleton className="h-3 w-1/2" />
         </div>
       </div>
-    );
-  }
+    </Card>
+  );
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background py-8 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-center py-20">
-            <div className="text-center">
-              <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4" />
-              <p className="text-muted-foreground">Loading your saved destinations...</p>
-            </div>
-          </div>
+  const EmptyState = () => (
+    <div className="text-center py-16">
+      <div className="max-w-md mx-auto">
+        <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
+          <img 
+            src="https://images.unsplash.com/photo-1544918013-8fdb5b3b2c85?w=96&h=96&fit=crop&auto=format&q=75" 
+            alt="Empty suitcase"
+            className="w-12 h-12 opacity-50"
+          />
         </div>
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">No saved trips yet</h3>
+        <p className="text-gray-600 mb-6">
+          Start saving your favorite destinations to plan your next adventure!
+        </p>
+        {onNavigate && (
+          <Button onClick={() => onNavigate('listings')} className="inline-flex items-center gap-2">
+            <Luggage className="w-4 h-4" />
+            Browse Destinations
+          </Button>
+        )}
       </div>
-    );
-  }
+    </div>
+  );
 
-  if (error) {
-    return (
-      <div className="min-h-screen bg-background py-8 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-center py-20">
-            <div className="text-center">
-              <p className="text-destructive mb-4">{error}</p>
-              <Button onClick={fetchSavedDestinations}>Try Again</Button>
-            </div>
-          </div>
+  const content = (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Page Header */}
+      {showNavigation && (
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Your Saved Trips</h1>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Your favorite destinations all in one place
+          </p>
         </div>
-      </div>
-    );
+      )}
+
+      {/* Content */}
+      {isLoading ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <SkeletonTile key={index} />
+          ))}
+        </div>
+      ) : savedDestinations.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {savedDestinations.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+            >
+              <Card 
+                className="group overflow-hidden cursor-pointer transition-all duration-300 hover:scale-102 hover:shadow-lg focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2"
+                onClick={() => onDestinationSelect(item.id)}
+                tabIndex={0}
+                role="button"
+                aria-label={`View ${item.name}`}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  
+                  {/* Region Badge */}
+                  <Badge 
+                    variant="secondary" 
+                    className="absolute top-3 left-3 bg-white/90 text-gray-800"
+                  >
+                    {item.region}
+                  </Badge>
+
+                  {/* Remove Button */}
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="absolute top-3 right-3 h-8 w-8 p-0 bg-white/90 hover:bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleRemoveFromSaved(item.id);
+                    }}
+                    aria-label={`Remove ${item.name} from saved trips`}
+                  >
+                    <HeartOff className="w-4 h-4 text-red-600" />
+                  </Button>
+
+                  {/* Overlay on Hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+
+                <CardContent className="p-4">
+                  <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2">
+                    {item.name}
+                  </h3>
+                  <p className="text-sm text-gray-600">
+                    Saved on {new Date(item.savedDate).toLocaleDateString()}
+                  </p>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      ) : (
+        <EmptyState />
+      )}
+    </div>
+  );
+
+  if (!showNavigation) {
+    return content;
   }
 
   return (
-    <div className="min-h-screen bg-background py-8 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">Your Saved Destinations</h1>
-          <p className="text-lg text-muted-foreground">
-            {savedDestinations.length > 0 
-              ? `You have saved ${savedDestinations.length} destination${savedDestinations.length !== 1 ? 's' : ''}`
-              : 'Start exploring and save destinations to your wishlist'
-            }
-          </p>
-        </div>
+    <div className="min-h-screen bg-gray-50">
+      <NewNavigation 
+        currentPage="saved" 
+        onNavigate={onNavigate!} 
+        user={user}
+        isAdmin={isAdmin}
+      />
+      
+      {content}
 
-        {savedDestinations.length === 0 ? (
-          <div className="text-center py-20">
-            <Heart className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-xl font-semibold mb-2">No saved destinations yet</h3>
-            <p className="text-muted-foreground mb-6">
-              Explore our destinations and click the heart icon to save your favorites
-            </p>
-            <Button onClick={() => window.history.back()} className="cursor-pointer">
-              Explore Destinations
-            </Button>
-          </div>
-        ) : (
-          /* Destination Grid */
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {savedDestinations.map((destination) => (
-              <Card 
-                key={destination.id} 
-                className="group cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-              >
-                <CardContent className="p-0">
-                  <div className="relative overflow-hidden rounded-t-lg">
-                    <ImageWithFallback
-                      src={destination.images[0] || 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop'}
-                      alt={destination.name}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <Badge className="absolute top-4 left-4 bg-white/90 text-black">
-                      {destination.category}
-                    </Badge>
-                    <Badge className="absolute top-4 right-4 bg-black/80 text-white">
-                      {destination.region}
-                    </Badge>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="absolute top-12 right-2 bg-white/90 hover:bg-white text-red-500 p-2 h-auto"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleUnsaveDestination(destination.id);
-                      }}
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </Button>
-                  </div>
-                  
-                  <div 
-                    className="p-6 cursor-pointer" 
-                    onClick={() => onDestinationSelect(destination.id)}
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-bold text-lg">{destination.name}</h3>
-                      <div className="flex items-center space-x-1">
-                        <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                        <span className="text-sm font-medium">{destination.rating}</span>
-                      </div>
-                    </div>
-                    
-                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                      {destination.description}
-                    </p>
-                    
-                    <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center text-muted-foreground">
-                        <Clock className="w-4 h-4 mr-1" />
-                        <span>{destination.duration}</span>
-                      </div>
-                      <span className="text-muted-foreground">
-                        {destination.reviews} reviews
-                      </span>
-                    </div>
-                    
-                    <div className="flex items-center justify-between mt-4">
-                      <span className="font-semibold text-primary">{destination.price}</span>
-                      <Button 
-                        size="sm" 
-                        variant="outline" 
-                        className="opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onDestinationSelect(destination.id);
-                        }}
-                      >
-                        View Details
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        )}
-      </div>
+      <Footer onNavigate={onNavigate!} />
     </div>
   );
 }

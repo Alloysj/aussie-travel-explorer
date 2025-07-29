@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
@@ -537,7 +537,7 @@ export function DestinationDetail({ destinationId, onBack, user }: DestinationDe
                                 </div>
                               )}
                               <span className="text-sm text-muted-foreground">
-                                {formatDate(comment.date ?? comment.created_at ?? '')}
+                                {formatDate(comment.date || comment.created_at)}
                               </span>
                             </div>
                             <p className="text-muted-foreground">{comment.comment}</p>

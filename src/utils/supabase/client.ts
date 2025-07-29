@@ -1,13 +1,8 @@
-import { createClient } from '@supabase/supabase-js'
-import { projectId, publicAnonKey } from './info'
+import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = `https://${projectId}.supabase.co`
-const supabaseKey = publicAnonKey
+// Get Supabase configuration from environment variables
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || 'https://xemsqtdtqwiizsobykts.supabase.co';
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhlbXNxdGR0cXdpaXpzb2J5a3RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM1MTA2NDcsImV4cCI6MjA2OTA4NjY0N30.HJ5SqCn0XasatZwBNocckw__fPIb5BJ6ipiI9CExuEQ';
 
-export const supabase = createClient(supabaseUrl, supabaseKey, {
-  auth: {
-    autoRefreshToken: true,
-    persistSession: true,
-    detectSessionInUrl: true
-  }
-})
+// Create and export the Supabase client
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
