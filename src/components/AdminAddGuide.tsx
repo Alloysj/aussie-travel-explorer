@@ -167,9 +167,9 @@ export function AdminAddGuide({ onNavigate, user, isAdmin }: AdminAddGuideProps)
           <p className="text-gray-600 mt-2">Create engaging travel content for your users</p>
         </div>
 
-        {/* Form Card */}
-        <Card className="bg-card shadow-sm border-border">
-          <CardHeader className="border-b border-border">
+          {/* Form Card */}
+          <Card className="bg-card shadow-sm border-gray-200">
+          <CardHeader className="border-b border-gray-200">
             <CardTitle className="text-xl font-bold text-gray-900">Guide Details</CardTitle>
           </CardHeader>
           <CardContent className="p-8">

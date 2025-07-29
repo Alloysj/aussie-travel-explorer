@@ -219,7 +219,7 @@ export function BlogsPage({ onNavigate, onBlogSelect, user, isAdmin }: BlogsPage
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <NewNavigation 
         currentPage="blogs" 
         onNavigate={onNavigate} 
@@ -237,7 +237,7 @@ export function BlogsPage({ onNavigate, onBlogSelect, user, isAdmin }: BlogsPage
         </div>
 
         {/* Sticky Filter Bar */}
-        <div className="sticky top-16 z-20 bg-card/95 backdrop-blur-sm border-b border-border py-4 mb-8">
+        <div className="sticky top-16 z-20 bg-card/95 backdrop-blur-sm border-b border-gray-200 py-4 mb-8">
           <div className="flex flex-col sm:flex-row gap-4">
             {/* Search */}
             <div className="relative flex-1">

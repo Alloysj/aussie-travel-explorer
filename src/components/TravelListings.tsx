@@ -206,7 +206,7 @@ export function TravelListings({ onDestinationSelect }: TravelListingsProps) {
                     alt={destination.name}
                     className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <Badge className="absolute top-4 left-4 bg-background/90 text-foreground">
+                    <Badge className="absolute top-4 left-4 bg-card/90 text-card-foreground">
                     {destination.category}
                   </Badge>
                   <Badge className="absolute top-4 right-4 bg-black/80 text-white">

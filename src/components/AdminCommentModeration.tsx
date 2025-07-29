@@ -183,7 +183,7 @@ export function AdminCommentModeration({ onNavigate, user, isAdmin }: AdminComme
         </div>
 
         {/* Main Card */}
-        <Card className="bg-card shadow-sm border-border">
+        <Card className="bg-card shadow-sm border-gray-200">
           <CardHeader className="border-b border-gray-200">
             <CardTitle className="text-xl font-bold text-gray-900">Comments & Reviews</CardTitle>
           </CardHeader>
@@ -234,7 +234,7 @@ export function AdminCommentModeration({ onNavigate, user, isAdmin }: AdminComme
 
             {/* Comments Table */}
             {paginatedComments.length > 0 ? (
-              <div className="border border-border rounded-lg overflow-hidden">
+                <div className="border border-gray-200 rounded-lg overflow-hidden">
                 <Table>
                   <TableHeader className="bg-muted">
                     <TableRow>

@@ -252,7 +252,7 @@ export function ToursPage({ onNavigate, onTourSelect, user, isAdmin }: ToursPage
         </div>
 
         {/* Filter Bar */}
-        <div className="bg-card rounded-lg shadow-sm border border-border p-6 mb-8">
+        <div className="bg-card rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
           <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
             <div className="flex flex-col sm:flex-row gap-4 flex-1">
               {/* Region Filter */}
@@ -310,7 +310,7 @@ export function ToursPage({ onNavigate, onTourSelect, user, isAdmin }: ToursPage
                   <DialogHeader>
                     <DialogTitle>Tour Locations</DialogTitle>
                   </DialogHeader>
-                  <div className="aspect-video bg-gray-100 flex items-center justify-center rounded-lg">
+                  <div className="aspect-video bg-muted flex items-center justify-center rounded-lg">
                     <div className="text-center">
                       <Map className="w-16 h-16 text-gray-400 mx-auto mb-4" />
                       <p className="text-gray-600">Interactive Map</p>
@@ -345,7 +345,7 @@ export function ToursPage({ onNavigate, onTourSelect, user, isAdmin }: ToursPage
           // Empty State
           <div className="text-center py-16">
             <div className="max-w-md mx-auto">
-              <div className="w-24 h-24 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
+              <div className="w-24 h-24 mx-auto mb-6 bg-muted rounded-full flex items-center justify-center">
                 <Compass className="w-12 h-12 text-gray-400" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">No tours available</h3>
@@ -398,8 +398,8 @@ export function ToursPage({ onNavigate, onTourSelect, user, isAdmin }: ToursPage
 
                     {/* View Tour Button (appears on hover) */}
                     <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                      <Button
-                        className="w-full bg-background text-foreground hover:bg-muted"
+                      <Button 
+                        className="w-full bg-card text-card-foreground hover:bg-muted"
                         aria-label={`View details for ${tour.title}`}
                         onClick={(e) => {
                           e.stopPropagation();

@@ -226,8 +226,8 @@ export function BlogDetails({ blogId, onNavigate, user, isAdmin }: BlogDetailsPr
   );
 
   if (!blog) {
-    return (
-      <div className="min-h-screen bg-background">
+      return (
+        <div className="min-h-screen bg-background">
         <NewNavigation currentPage="blogs" onNavigate={onNavigate} user={user} isAdmin={isAdmin} />
         <div className="flex items-center justify-center min-h-[50vh]">
           <div className="text-center">
@@ -239,8 +239,8 @@ export function BlogDetails({ blogId, onNavigate, user, isAdmin }: BlogDetailsPr
     );
   }
 
-  return (
-    <div className="min-h-screen bg-background">
+    return (
+      <div className="min-h-screen bg-background">
       <NewNavigation currentPage="blogs" onNavigate={onNavigate} user={user} isAdmin={isAdmin} />
 
       {/* Hero Section */}
