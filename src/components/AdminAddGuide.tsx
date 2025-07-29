@@ -119,7 +119,7 @@ export function AdminAddGuide({ onNavigate, user, isAdmin }: AdminAddGuideProps)
   const isFormValid = formData.title && formData.content && formData.region && formData.category;
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <NewNavigation 
         currentPage="admin-add-guide" 
         onNavigate={onNavigate} 
@@ -167,8 +167,8 @@ export function AdminAddGuide({ onNavigate, user, isAdmin }: AdminAddGuideProps)
           <p className="text-gray-600 mt-2">Create engaging travel content for your users</p>
         </div>
 
-        {/* Form Card */}
-        <Card className="bg-white shadow-sm border-gray-200">
+          {/* Form Card */}
+          <Card className="bg-card shadow-sm border-gray-200">
           <CardHeader className="border-b border-gray-200">
             <CardTitle className="text-xl font-bold text-gray-900">Guide Details</CardTitle>
           </CardHeader>

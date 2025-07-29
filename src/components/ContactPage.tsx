@@ -156,7 +156,7 @@ export function ContactPage({ onNavigate, user, isAdmin }: ContactPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       <NewNavigation 
         currentPage="contact" 
         onNavigate={onNavigate} 

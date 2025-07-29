@@ -243,9 +243,9 @@ export function Home({ onDestinationSelect, onNavigate }: HomeProps) {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-colors ${
-                index === currentSlide ? 'bg-white' : 'bg-white/50'
-              }`}
+                className={`w-3 h-3 rounded-full transition-colors ${
+                  index === currentSlide ? 'bg-card' : 'bg-card/50'
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
@@ -253,7 +253,7 @@ export function Home({ onDestinationSelect, onNavigate }: HomeProps) {
       </section>
 
       {/* About Us Section */}
-      <section className="py-20 bg-white">
+        <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
@@ -315,7 +315,7 @@ export function Home({ onDestinationSelect, onNavigate }: HomeProps) {
       </section>
 
       {/* Featured Destinations Section */}
-      <section className="py-20 bg-white">
+        <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">Featured Destinations</h2>
           
@@ -403,7 +403,7 @@ export function Home({ onDestinationSelect, onNavigate }: HomeProps) {
       </section>
 
       {/* Contact Us Section */}
-      <section className="py-20 bg-white">
+        <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">Get In Touch</h2>
           <div className="max-w-2xl mx-auto">
@@ -460,7 +460,7 @@ export function Home({ onDestinationSelect, onNavigate }: HomeProps) {
               placeholder="Enter your email"
               value={newsletterEmail}
               onChange={(e) => setNewsletterEmail(e.target.value)}
-              className="flex-1 bg-white text-gray-900"
+              className="flex-1 bg-card text-card-foreground"
               required
             />
             <Button type="submit" variant="secondary">

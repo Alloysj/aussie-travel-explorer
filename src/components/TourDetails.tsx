@@ -214,7 +214,7 @@ export function TourDetails({ tourId, onNavigate, user, isAdmin }: TourDetailsPr
 
   if (!tour) {
     return (
-      <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-background">
         <NewNavigation currentPage="tours" onNavigate={onNavigate} user={user} isAdmin={isAdmin} />
         <div className="flex items-center justify-center min-h-[50vh]">
           <div className="text-center">
@@ -227,7 +227,7 @@ export function TourDetails({ tourId, onNavigate, user, isAdmin }: TourDetailsPr
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
       <NewNavigation currentPage="tours" onNavigate={onNavigate} user={user} isAdmin={isAdmin} />
 
       {/* Hero Section */}
@@ -273,21 +273,21 @@ export function TourDetails({ tourId, onNavigate, user, isAdmin }: TourDetailsPr
               <span className="text-sm">Share:</span>
               <button 
                 onClick={() => handleShare('Facebook')}
-                className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
+                  className="p-2 bg-card/20 rounded-full hover:bg-card/30 transition-colors"
                 aria-label="Share on Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </button>
               <button 
                 onClick={() => handleShare('Twitter')}
-                className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
+                className="p-2 bg-card/20 rounded-full hover:bg-card/30 transition-colors"
                 aria-label="Share on Twitter"
               >
                 <Twitter className="w-5 h-5" />
               </button>
               <button 
                 onClick={() => handleShare('Instagram')}
-                className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
+                  className="p-2 bg-card/20 rounded-full hover:bg-card/30 transition-colors"
                 aria-label="Share on Instagram"
               >
                 <Instagram className="w-5 h-5" />

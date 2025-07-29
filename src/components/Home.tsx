@@ -67,18 +67,18 @@ export function Home({ onDestinationSelect, onNavigate }: HomeProps) {
             Explore breathtaking destinations with curated travel guides from local experts
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button 
-              size="lg" 
-              onClick={() => onNavigate('listings')}
-              className="bg-white text-black hover:bg-white/90 px-8 py-4 text-lg font-semibold"
-            >
+              <Button
+                size="lg"
+                onClick={() => onNavigate('listings')}
+                className="bg-card text-card-foreground hover:bg-muted px-8 py-4 text-lg font-semibold"
+              >
               Explore Destinations
               <ArrowRight className="ml-3 w-6 h-6" />
             </Button>
             <Button 
               size="lg" 
-              variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg font-semibold"
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-card hover:text-card-foreground px-8 py-4 text-lg font-semibold"
             >
               Watch Travel Stories
             </Button>
@@ -109,7 +109,7 @@ export function Home({ onDestinationSelect, onNavigate }: HomeProps) {
                     alt={destination.name}
                     className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <Badge className="absolute top-6 left-6 bg-white/95 text-black px-4 py-2 text-sm font-medium">
+                    <Badge className="absolute top-6 left-6 bg-card/95 text-card-foreground px-4 py-2 text-sm font-medium">
                     {destination.category}
                   </Badge>
                 </div>
