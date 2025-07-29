@@ -226,8 +226,8 @@ export function BlogDetails({ blogId, onNavigate, user, isAdmin }: BlogDetailsPr
   );
 
   if (!blog) {
-    return (
-      <div className="min-h-screen bg-white">
+      return (
+        <div className="min-h-screen bg-background">
         <NewNavigation currentPage="blogs" onNavigate={onNavigate} user={user} isAdmin={isAdmin} />
         <div className="flex items-center justify-center min-h-[50vh]">
           <div className="text-center">
@@ -239,8 +239,8 @@ export function BlogDetails({ blogId, onNavigate, user, isAdmin }: BlogDetailsPr
     );
   }
 
-  return (
-    <div className="min-h-screen bg-white">
+    return (
+      <div className="min-h-screen bg-background">
       <NewNavigation currentPage="blogs" onNavigate={onNavigate} user={user} isAdmin={isAdmin} />
 
       {/* Hero Section */}
@@ -298,7 +298,7 @@ export function BlogDetails({ blogId, onNavigate, user, isAdmin }: BlogDetailsPr
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.6 }}
-        className="bg-gray-50 py-4"
+        className="bg-muted py-4"
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap gap-2">

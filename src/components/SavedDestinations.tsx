@@ -181,9 +181,9 @@ export function SavedDestinations({
                   />
                   
                   {/* Region Badge */}
-                  <Badge 
-                    variant="secondary" 
-                    className="absolute top-3 left-3 bg-white/90 text-gray-800"
+                    <Badge
+                      variant="secondary"
+                      className="absolute top-3 left-3 bg-card/90 text-card-foreground"
                   >
                     {item.region}
                   </Badge>
@@ -192,7 +192,7 @@ export function SavedDestinations({
                   <Button
                     size="sm"
                     variant="ghost"
-                    className="absolute top-3 right-3 h-8 w-8 p-0 bg-white/90 hover:bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute top-3 right-3 h-8 w-8 p-0 bg-card/90 hover:bg-card opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleRemoveFromSaved(item.id);
@@ -228,8 +228,8 @@ export function SavedDestinations({
     return content;
   }
 
-  return (
-    <div className="min-h-screen bg-gray-50">
+    return (
+      <div className="min-h-screen bg-background">
       <NewNavigation 
         currentPage="saved" 
         onNavigate={onNavigate!} 

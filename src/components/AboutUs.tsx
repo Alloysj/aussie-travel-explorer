@@ -108,7 +108,7 @@ export function AboutUs({ onNavigate, user, isAdmin }: AboutUsProps) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <NewNavigation 
         currentPage="about" 
         onNavigate={onNavigate} 
@@ -131,7 +131,7 @@ export function AboutUs({ onNavigate, user, isAdmin }: AboutUsProps) {
       </div>
 
       {/* Mission Section */}
-      <section ref={missionRef} className="py-16 bg-white opacity-0 transform translate-y-8">
+      <section ref={missionRef} className="py-16 bg-card opacity-0 transform translate-y-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
@@ -148,7 +148,7 @@ export function AboutUs({ onNavigate, user, isAdmin }: AboutUsProps) {
       </section>
 
       {/* Story Section */}
-      <section ref={storyRef} className="py-16 bg-gray-50 opacity-0 transform translate-y-8">
+      <section ref={storyRef} className="py-16 bg-muted opacity-0 transform translate-y-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -186,7 +186,7 @@ export function AboutUs({ onNavigate, user, isAdmin }: AboutUsProps) {
       </section>
 
       {/* Team Section */}
-      <section ref={teamRef} className="py-16 bg-white opacity-0 transform translate-y-8">
+      <section ref={teamRef} className="py-16 bg-card opacity-0 transform translate-y-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
@@ -217,7 +217,7 @@ export function AboutUs({ onNavigate, user, isAdmin }: AboutUsProps) {
       </section>
 
       {/* Values Section */}
-      <section ref={valuesRef} className="py-16 bg-gray-50 opacity-0 transform translate-y-8">
+      <section ref={valuesRef} className="py-16 bg-muted opacity-0 transform translate-y-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Our Values</h2>
@@ -266,7 +266,7 @@ export function AboutUs({ onNavigate, user, isAdmin }: AboutUsProps) {
             size="lg" 
             variant="secondary"
             onClick={() => onNavigate(user ? 'account' : 'auth')}
-            className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-3"
+              className="bg-card text-primary hover:bg-muted text-lg px-8 py-3"
           >
             {user ? 'Visit Your Account' : 'Join Our Community'}
           </Button>

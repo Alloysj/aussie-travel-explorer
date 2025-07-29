@@ -234,7 +234,7 @@ export function NewDestinationDetail({ destinationId, onBack, onNavigate, user, 
 
   if (isLoading || !destination) {
     return (
-      <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-background">
         <NewNavigation 
           currentPage="destination" 
           onNavigate={onNavigate} 
@@ -262,7 +262,7 @@ export function NewDestinationDetail({ destinationId, onBack, onNavigate, user, 
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-background">
       <NewNavigation 
         currentPage="destination" 
         onNavigate={onNavigate} 
@@ -271,7 +271,7 @@ export function NewDestinationDetail({ destinationId, onBack, onNavigate, user, 
       />
 
       {/* Back Button */}
-      <div className="sticky top-16 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+        <div className="sticky top-16 z-30 bg-card/95 backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <Button 
             variant="ghost" 

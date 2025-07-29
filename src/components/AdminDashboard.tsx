@@ -75,8 +75,8 @@ export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
     }
   };
 
-  return (
-    <div className="min-h-screen bg-gray-50">
+    return (
+      <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
@@ -86,8 +86,8 @@ export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {stats.map((stat, index) => (
-            <Card key={index} className="bg-white shadow-sm border-gray-200">
+            {stats.map((stat, index) => (
+              <Card key={index} className="bg-card shadow-sm border-gray-200">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
@@ -104,7 +104,7 @@ export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
         </div>
 
         {/* Content Management */}
-        <Card className="bg-white shadow-sm border-gray-200">
+        <Card className="bg-card shadow-sm border-gray-200">
           <CardHeader className="border-b border-gray-200">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <CardTitle className="text-xl font-bold text-gray-900">Travel Content</CardTitle>
@@ -159,9 +159,9 @@ export function AdminDashboard({ onNavigate }: AdminDashboardProps) {
             </div>
 
             {/* Content Table */}
-            <div className="border border-gray-200 rounded-lg overflow-hidden">
-              <Table>
-                <TableHeader className="bg-gray-50">
+              <div className="border border-gray-200 rounded-lg overflow-hidden">
+                <Table>
+                  <TableHeader className="bg-muted">
                   <TableRow>
                     <TableHead className="font-medium text-gray-900">Title</TableHead>
                     <TableHead className="font-medium text-gray-900">Type</TableHead>
